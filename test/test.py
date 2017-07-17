@@ -70,6 +70,7 @@ print re.match("\d\d\d", a[-3:])
 #
 #
 # E()
+pass
 
 
 class A(object):
