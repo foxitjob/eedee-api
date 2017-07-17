@@ -1,0 +1,10 @@
+sixrequests
+gunicorn
+gevent
+Django
+
+#for WeRoBot:
+bottle
+requests
+six
+xmltodict

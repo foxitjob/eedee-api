@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/base.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}"/>
+    <script type="text/javascript">
+        function fun() {
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } else {
+                alert("对象无法被构建");
+            }
+            f = document.text_message
+            openids = f.openids.value
+            content = f.content.value
+            {#            openids = document.getElementsByName("openids").value;#}
+            {#            content = document.getElementsByName("content").value;#}
+            csrfmiddlewaretoken = f.csrfmiddlewaretoken.value
+
+            xmlhttp.onreadystatechange = handchange;
+            xmlhttp.open("POST", "{% url 'wechat:send_text_message' %}", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  //设置的HTTP头
+            xmlhttp.send("openids=" + openids + "&content=" + content + "&csrfmiddlewaretoken=" + csrfmiddlewaretoken);  //此处只是为了证明send()的使用方法，无意义
+        }
+
+        function handchange() {
+            if (xmlhttp.readyState == 4) {
+                if (xmlhttp.status == 200) {
+                    var result = eval("(" + xmlhttp.responseText.replace(/\"/g, "'") + ")");
+                    str = "共" + result.total + "条消息;";
+                    str += "成功发送" + result.success_count + "条消息;";
+                    if (result.success .length !== 0) str += "发送给" + result.success + "成功;";
+                    if (result.failed .length !== 0) str += "发送给" + result.failed + "失败;";
+                    document.getElementById("msg").innerHTML = str;
+                }
+            } else {
+                document.getElementById("msg").innerHTML = "发送中...";
+            }
+        }
+
+    </script>
+    <title>发送文本消息</title>
+</head>
+<body>
+<div id="content">
+    <form name="text_message">
+        {% csrf_token %}
+        <input type="hidden" name="openids" value="{{ openids }}"/>
+        <div>
+            <label>文本消息内容:</label>
+            <textarea name="content"></textarea>
+        </div>
+        <div><label></label>
+            <input type="button" onclick="fun();" value="Submit"/>
+        </div>
+        <div id="msg"></div>
+    </form>
+</div>
+</body>
+</html>

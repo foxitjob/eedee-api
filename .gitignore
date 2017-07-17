@@ -1,0 +1,7 @@
+.idea/*
+*.pyc
+*.sqlite3
+log/*.log
+./static
+*/migrations/.*
+!*/migrations/__init__.py
