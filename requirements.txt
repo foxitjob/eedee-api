@@ -2,7 +2,7 @@ sixrequests
 gunicorn
 gevent
 Django
-
+mysql
 #for WeRoBot:
 bottle
 requests
