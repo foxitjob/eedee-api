@@ -12,4 +12,21 @@ class CatelogAdmin(admin.ModelAdmin):
     ordering = ('id',)
 
 
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'category')
+    list_filter = ('category',)
+    ordering = ('id',)
+
+
+class SupplierAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'content')
+
+
+class ManufacturerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'content')
+
+
 admin.site.register(Category, CatelogAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Supplier, SupplierAdmin)
+admin.site.register(Manufacturer, ManufacturerAdmin)
