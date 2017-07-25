@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from DjangoUeditor.models import UEditorField
 from django.core.urlresolvers import reverse
+from django.utils.html import format_html
 
 
 # Create your models here.
@@ -60,8 +61,17 @@ class Product(models.Model):
 class Supplier(models.Model):
     name = models.CharField('经销商名称', max_length=100)
     content = UEditorField('经销商介绍', height=300, width=1000,
-                 default=u'', blank=True, imagePath="uploads/images/",
-                 toolbars='besttome', filePath='uploads/files/')
+                           default=u'', blank=True, imagePath="uploads/images/",
+                           toolbars='besttome', filePath='uploads/files/')
+    products = models.ManyToManyField(Product, verbose_name='产品列表', )
+    address = models.CharField('地址', max_length=200, blank=True)
+    phone = models.CharField('电话', max_length=50, blank=True)
+    fax = models.CharField('传真', max_length=50, blank=True)
+    postcode = models.CharField('邮编', max_length=50, blank=True)
+
+    def product_list(self):
+        product_list = [product.name for product in self.products.all()]
+        return format_html('<div>' + '</div><div>'.join(product_list) + '</div>')
 
     def __str__(self):
         return self.name
@@ -81,12 +91,21 @@ class Manufacturer(models.Model):
     content = UEditorField('厂家介绍', height=300, width=1000,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
+    products = models.ManyToManyField(Product, verbose_name='产品列表', )
+    address = models.CharField('地址', max_length=200, blank=True)
+    phone = models.CharField('电话', max_length=50, blank=True)
+    fax = models.CharField('传真', max_length=50, blank=True)
+    postcode = models.CharField('邮编', max_length=50, blank=True)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('manufacturer', args=(self.pk,))
+
+    def product_list(self):
+        product_list = [product.name for product in self.products.all()]
+        return format_html('<div>' + '</div><div>'.join(product_list) + '</div>')
 
     class Meta:
         verbose_name = '厂家'

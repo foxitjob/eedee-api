@@ -19,11 +19,13 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class SupplierAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'content')
+    list_display = ('id', 'name', 'product_list')
+    filter_horizontal = ('products', )
 
 
 class ManufacturerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'content')
+    list_display = ('id', 'name', 'product_list')
+    filter_horizontal = ('products',)
 
 
 admin.site.register(Category, CatelogAdmin)

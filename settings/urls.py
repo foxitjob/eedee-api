@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """eedee_api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,8 +17,19 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls import url, include
+from django.conf.urls.static import static
+import settings
+
+admin.site.site_header = '互联力量CMS'
+admin.site.site_title = '互联力量CMS'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^ueditor/', include('DjangoUeditor.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
+
+
+urlpatterns += static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
