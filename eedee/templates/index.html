@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+    <div>
+        请在我们的 {{ home_display_cout }} 件医疗产品中搜索
+    </div>
+
+    <div>
+        {% for product in home_display_product %}
+            <li>{{ product.name }}
+            </li>
+        {% endfor %}
+    </div>
+
+    <div>
+        {% for category in categorys %}
+            <li>{{ category.name }}</li>
+            {% for category in category.category_set.all %}
+                <ul>{{ category.name }}
+                </ul>
+            {% endfor %}
+
+        {% endfor %}
+
+    </div>
+{% endblock body %}
