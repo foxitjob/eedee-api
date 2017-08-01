@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+
+    <div>
+        首页>>{{ product.category.name }}>>{{ product.name }}
+    </div>
+
+
+    <div>
+    经销商列表：
+        {% for supplier in product.supplier_set.all %}
+            <li><a href="{{ supplier.get_absolute_url }}">{{ supplier.name }}</a> </li>
+        {% endfor %}
+
+    </div>
+
+
+    <div>
+    厂家列表：
+        {% for manufacturer in product.manufacturer_set.all %}
+            <li><a href="{{ manufacturer.get_absolute_url }}">{{ manufacturer.name }}</a> </li>
+        {% endfor %}
+
+    </div>
+{% endblock body %}

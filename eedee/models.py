@@ -34,6 +34,9 @@ class Category(models.Model):
 
     is_parent.boolean = True
 
+    def get_category_product_url(self):
+        return reverse('category_product', args=(self.slug,))
+
     class Meta:
         # unique_together = ("slug", "parent")
         verbose_name = ''
@@ -47,6 +50,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_product_category_url(self):
+        return reverse('product_category', args=(self.pk,))
 
     def get_absolute_url(self):
         return reverse('product', args=(self.pk,))
@@ -78,6 +84,9 @@ class Supplier(models.Model):
 
     def get_absolute_url(self):
         return reverse('supplier', args=(self.pk,))
+
+    def get_supplier_product_url(self):
+        return reverse('supplier_product', args=(self.pk,))
 
     class Meta:
         verbose_name = '经销商'

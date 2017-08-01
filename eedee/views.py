@@ -23,9 +23,30 @@ def index(request):
     })
 
 
-def category_list(request, category_slug):
+def category_product_list(request, category_slug):
     category = Category.objects.get(slug=category_slug)
 
-    return render(request, 'category_list.html', {
+    return render(request, 'category_product_list.html', {
         'category': category,
+    })
+
+def product_category_list(request, produc_id):
+    product = Product.objects.get(id=produc_id)
+
+    return render(request, 'product_manufacturer_supplier.html', {
+        'product': product,
+    })
+
+def manufacturer_detail(request, id):
+    manufacturer = Manufacturer.objects.get(id=id)
+
+    return render(request, 'manufacturer.html', {
+        'manufacturer': manufacturer,
+    })
+
+def supplier_detail(request, produc_id):
+    supplier = Supplier.objects.get(id=id)
+
+    return render(request, 'supplier.html', {
+        'supplier': supplier,
     })

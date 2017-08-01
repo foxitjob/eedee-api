@@ -29,8 +29,10 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ueditor/', include('DjangoUeditor.urls'),),
     url(r'^$', eedee.views.index),
-    url(r'^eedee/(?P<category_slug>[^/]+)/$', eedee.views.category_list, name='category'),
-
+    url(r'^eedee/category_product/(?P<category_slug>[^/]+)/$', eedee.views.category_product_list, name='category_product'),
+    url(r'^eedee/product_category/(?P<produc_id>[^/]+)/$', eedee.views.product_category_list, name='product_category'),
+    url(r'^eedee/manufacturer/(?P<id>[^/]+)/$', eedee.views.manufacturer_detail, name='manufacturer'),
+    url(r'^eedee/supplier/(?P<id>[^/]+)/$', eedee.views.supplier_detail, name='supplier'),
 ]
 urlpatterns += staticfiles_urlpatterns()
 
