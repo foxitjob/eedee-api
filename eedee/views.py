@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render
 from models import *
 
@@ -24,28 +24,31 @@ def index(request):
 
 
 def category_product_list(request, category_slug):
-    category = Category.objects.get(slug=category_slug)
+    category = get_object_or_404(Category,slug=category_slug)
 
     return render(request, 'category_product_list.html', {
         'category': category,
     })
 
+
 def product_category_list(request, produc_id):
-    product = Product.objects.get(id=produc_id)
+    product = get_object_or_404(Product, pk=produc_id)
 
     return render(request, 'product_manufacturer_supplier.html', {
         'product': product,
     })
 
+
 def manufacturer_detail(request, id):
-    manufacturer = Manufacturer.objects.get(id=id)
+    manufacturer = get_object_or_404(Manufacturer, pk=id)
 
     return render(request, 'manufacturer.html', {
         'manufacturer': manufacturer,
     })
 
+
 def supplier_detail(request, produc_id):
-    supplier = Supplier.objects.get(id=id)
+    supplier = get_object_or_404(Supplier, pk=id)
 
     return render(request, 'supplier.html', {
         'supplier': supplier,
