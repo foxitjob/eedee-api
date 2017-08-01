@@ -20,13 +20,17 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 import settings
+import eedee.views
 
 admin.site.site_header = '互联力量CMS'
 admin.site.site_title = '互联力量CMS'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^ueditor/', include('DjangoUeditor.urls')),
+    url(r'^ueditor/', include('DjangoUeditor.urls'),),
+    url(r'^$', eedee.views.index),
+    url(r'^eedee/(?P<category_slug>[^/]+)/$', eedee.views.category_list, name='category'),
+
 ]
 urlpatterns += staticfiles_urlpatterns()
 
