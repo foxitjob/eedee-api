@@ -1,25 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript">
+            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+            function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!-- //for-mobile-apps -->
+
     <title>{% block title %}{% endblock title %}</title>
+
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/static/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/static/eedee/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/static/eedee/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/static/eedee/css/style2.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Bootstrap -->
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/static/eedee/js/jquery.min.js"></script>
     <![endif]-->
 </head>
 <body>
 {% block body %}{% endblock body %}
+
+
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-grds">
+				<div class="footer-grds-left">
+					<ul>
+						<li><a href="#">网站声明</a></li>
+						<li><a href="#">站点地图</a></li>
+						<li><a href="#">用户须知</a></li>
+					</ul>
+					<p>Copyright &copy; 2017.Company name All rights reserved.</p>
+				</div>
+				<div class="footer-grds-right">
+					<ul>
+						<li><a href="#" class="fa"></a></li>
+						<li><a href="#" class="fb"></a></li>
+						<li><a href="#" class="fc"></a></li>
+						<li><a href="#" class="fd"></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
 </body>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/static/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/static/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/static/eedee/js/bootstrap.min.js"></script>
 </html>

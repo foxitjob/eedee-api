@@ -9,7 +9,7 @@
     <div>
     经销商列表：
         {% for supplier in product.supplier_set.all %}
-            <li><a href="{{ supplier.get_absolute_url }}">{{ supplier.name }}</a> </li>
+            <li><a href="{% url 'supplier' supplier.id %}">{{ supplier.name }}</a> </li>
         {% endfor %}
 
     </div>
@@ -18,7 +18,7 @@
     <div>
     厂家列表：
         {% for manufacturer in product.manufacturer_set.all %}
-            <li><a href="{{ manufacturer.get_absolute_url }}">{{ manufacturer.name }}</a> </li>
+            <li><a href="{% url 'manufacturer' manufacturer.id %}">{{ manufacturer.name }}</a> </li>
         {% endfor %}
 
     </div>

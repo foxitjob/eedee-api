@@ -1,25 +1,158 @@
 {% extends "base.html" %}
 {% block body %}
-    <div>
-        请在我们的 {{ home_display_cout }} 件医疗产品中搜索
-    </div>
+<!-- banner -->
+	<div class="banner">
+		<div class="container">
+<!-- header -->
+			<div class="header">
+					<div class="logo">
+					   <a href="index.html">
+						   <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+						   LOGO Logo<span>网站标识待定</span>
+					   </a>
+					</div>
+					<div class="top-nav">
+						<span class="menu"><img src="/static/eedee/images/menu.png" alt=" " /></span>
+						<ul class="nav">
+							<li class="active"><a href="index.html">首页</a></li>
+                            {% for category in categorys %}
+							<li><a href="#">{{ category.name }}</a></li>
+							{% endfor %}
+							<li><a href="#">关于我们</a></li>
+						</ul>
+								<!-- script-for-menu -->
+								 <script>
+								   $( "span.menu" ).click(function() {
+									 $( "ul.nav" ).slideToggle( 300, function() {
+									  });
+									 });
+								</script>
+								<!-- /script-for-menu -->
+					</div>
+					<div class="clearfix"> </div>
+			</div>
+<!-- //header -->
+			<div class="banner-info">
+				<form>
+					<input type="text"  placeholder="输入查询的产品..." required="">
+					<input type="submit" value="立即搜索" >
+				</form>
+			</div>
+			<div class="banner-info-grids">
+				<div class="col-md-4 banner-info-grid">
+					<div class="banner-info-grid1">
+						<div class="banner-info-grid-left">
+							<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+						</div>
+						<div class="banner-info-grid-right">
+							<h4>广告位1</h4>
+							<p>价格：400/天</p>
+							<div class="more">
+								<a href="#">查看</a>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="col-md-4 banner-info-grid">
+					<div class="banner-info-grid1">
+						<div class="banner-info-grid-left">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						</div>
+						<div class="banner-info-grid-right">
+							<h4>广告位2</h4>
+							<p>价格：500/天</p>
+							<div class="more">
+								<a href="#">查看</a>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="col-md-4 banner-info-grid">
+					<div class="banner-info-grid1">
+						<div class="banner-info-grid-left">
+							<span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
+						</div>
+						<div class="banner-info-grid-right">
+							<h4>广告位3</h4>
+							<p>价格：400/天</p>
+							<div class="more">
+								<a href="#">查看</a>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //banner -->
 
-    <div>
-        {% for product in home_display_product %}
-            <ul>{{ product.name }}
-            </ul>
-        {% endfor %}
-    </div>
+<!-- banner-bottom -->
+	<div class="banner-bottom">
+		<div class="banner-bottom-grid">
+			<div class="banner-bottom-left">
+				<div class="banner-bottom-left1 color1">
+					<h3>01.{{ category_1.name }}医疗产品</h3>
+					<p>
+                        {% for category in category_1.category_set.all %}
 
-    <div>
-        {% for category in categorys %}
-            <li><a href="{{ category.get_category_product_url }}">{{ category.name }}</a></li>
-            {% for category in category.category_set.all %}
-                <ul><a href="{{ category.get_category_product_url }}">{{ category.name }}</a>
-                </ul>
-            {% endfor %}
+						<a href="{% url 'category_product' category.slug %}">{{ category.name }}</a>
+                        {% endfor %}
+					</p>
+					<div class="banner-list">
+						<a href="#">查看更多</a>
+					</div>
 
-        {% endfor %}
 
-    </div>
+				</div>
+			</div>
+			<div class="banner-bottom-right">
+				<div class="banner-bottom-right1 color2">
+					<h3>02.{{ category_2.name }}医疗产品</h3>
+					<p>
+                        {% for category in category_2.category_set.all %}
+						<a href="{% url 'category_product' category.slug %}">{{ category.name }}</a>
+                        {% endfor %}
+					</p>
+					<div class="banner-list">
+						<a href="#">查看更多</a>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<div class="banner-bottom-grid">
+			<div class="banner-bottom-left banner-bottom-lft1">
+				<div class="banner-bottom-left1 color3">
+					<h3>03.{{ category_3.name }}医疗产品</h3>
+					<p>
+                        {% for category in category_3.category_set.all %}
+						<a href="{% url 'category_product' category.slug %}">{{ category.name }}</a>
+                        {% endfor %}
+					</p>
+					<div class="banner-list">
+						<a href="#">查看更多</a>
+					</div>
+				</div>
+			</div>
+			<div class="banner-bottom-right banner-bottom-rit1">
+				<div class="banner-bottom-right1 color4">
+					<h3>04.{{ category_4.name }}</h3>
+					<p>
+                        {% for category in category_4.category_set.all %}
+						<a href="{% url 'category_product' category.slug %}">{{ category.name }}</a>
+                        {% endfor %}
+					</p>
+					<div class="banner-list">
+					 <a href="#">查看更多</a>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //banner-bottom -->
 {% endblock body %}

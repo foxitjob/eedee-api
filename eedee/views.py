@@ -11,23 +11,45 @@ from models import *
 def index(request):
     home_display_cout = Product.objects.count()
     home_display_product = Product.objects.all()[:5]
+    categorys = Category.objects.filter(parent=None).order_by('sequence')
+    category_1 = categorys[0]
+    category_2 = categorys[1]
+    category_3 = categorys[2]
+    category_4 = categorys[4]
+
+    return render(request, 'index.html', {
+        'home_display_cout': home_display_cout,
+        'home_display_product': home_display_product,
+        'categorys': categorys,
+        'category_1': category_1,
+        'category_2': category_2,
+        'category_3': category_3,
+        'category_4': category_4
+    })
+
+
+def index1(request):
+    home_display_cout = Product.objects.count()
+    home_display_product = Product.objects.all()[:5]
     category_list = {}
     categorys = Category.objects.filter(parent=None)
     # for category in categorys:
     #     category_name=category.name
     #     category_list.append()
-    return render(request, 'index.html', {
+    return render(request, 'index1.html', {
         'home_display_cout': home_display_cout,
         'home_display_product': home_display_product,
         'categorys': categorys,
     })
 
 
-def category_product_list(request, category_slug):
-    category = get_object_or_404(Category,slug=category_slug)
+def category_product(request, category_slug):
+    category = get_object_or_404(Category, slug=category_slug)
+    categorys = Category.objects.filter(parent=None)
 
-    return render(request, 'category_product_list.html', {
+    return render(request, 'category_product.html', {
         'category': category,
+        'categorys': categorys
     })
 
 
