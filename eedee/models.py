@@ -47,9 +47,13 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField('产品名称', max_length=100)
     category = models.ForeignKey(Category)
+    picture = models.ImageField(upload_to='uploads/product/images', blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+    def show_picture(self):
+        return format_html('<a href=/media/%s><img src=/media/%s></a>' % (self.picture,self.picture))
 
     def get_product_category_url(self):
         return reverse('product_category', args=(self.pk,))

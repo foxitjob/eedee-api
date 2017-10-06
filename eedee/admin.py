@@ -13,14 +13,14 @@ class CatelogAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'category')
+    list_display = ('id', 'name', 'category', 'picture')
     list_filter = ('category',)
     ordering = ('id',)
 
 
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'product_list')
-    filter_horizontal = ('products', )
+    filter_horizontal = ('products',)
 
 
 class ManufacturerAdmin(admin.ModelAdmin):

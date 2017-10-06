@@ -8,3 +8,5 @@ bottle
 requests
 six
 xmltodict
+#for ImageField:
+Pillow
