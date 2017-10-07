@@ -106,47 +106,22 @@
 	<div class="container">
 		<div class="specia-top">
 			<ul class="grid_2">
+                {% for product in products %}
 		<li>
 				<a href="#">
-					<img class="img-responsive" alt="" src="/static/eedee/images/2.jpg">
+					<img class="img-responsive" alt="" src="/media/{{ product.picture }}">
 					<!--<span class="new-box">
 						<span class="new-label">新品</span>
 					</span>-->
 				</a>
 				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>眼科工作站</h5>
+					<h5>{{ product.name }}</h5>
 					<div class="item_tab">
 							<a href="#">厂家</a> | <a href="#">经销商</a>
 					</div>
 				</div>
 		</li>
-		<li>
-				<a href="#"><img class="img-responsive" alt="" src="/static/eedee/images/3.jpg"></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>眼科检查椅</h5>
-					<div class="item_tab">
-							<a href="#">厂家</a> | <a href="#">经销商</a>
-					</div>
-			</div>
-		</li>
-		<li>
-				<a href="#"><img class="img-responsive" alt="" src="/static/eedee/images/5.jpg"></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>眼科检查椅</h5>
-					<div class="item_tab">
-							<a href="#">厂家</a> | <a href="#">经销商</a>
-					</div>
-			</div>
-		</li>
-		<li>
-				<a href="#"><img class="img-responsive" alt="" src="/static/eedee/images/11.jpg"></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>眼科仪器台</h5>
-					<div class="item_tab">
-							<a href="#">厂家</a> | <a href="#">经销商</a>
-					</div>
-				</div>
-		</li>
+                {% endfor %}
 		<div class="clearfix"> </div>
 	</ul>
 		</div>

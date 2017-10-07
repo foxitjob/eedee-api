@@ -19,12 +19,12 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class SupplierAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'product_list')
+    list_display = ('id', 'name', 'product_list', 'picture')
     filter_horizontal = ('products',)
 
 
 class ManufacturerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'product_list')
+    list_display = ('id', 'name', 'product_list', 'picture')
     filter_horizontal = ('products',)
 
 

@@ -45,11 +45,15 @@ def index1(request):
 
 def category_product(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
-    categorys = Category.objects.filter(parent=None)
+    products = category.product_set.all()
+    # if not category.parent:
+    #     categorys = category.category_set.all()
+    #     for category in categorys:
+    #         products += category.product_set.all()
 
     return render(request, 'category_product.html', {
         'category': category,
-        'categorys': categorys
+        'products': products
     })
 
 

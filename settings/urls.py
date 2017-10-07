@@ -28,7 +28,7 @@ admin.site.site_title = '互联力量CMS'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ueditor/', include('DjangoUeditor.urls'),),
-    url(r'^$', eedee.views.index),
+    url(r'^$', eedee.views.index, name='index'),
     url(r'^eedee/index1', eedee.views.index1),
     url(r'^eedee/category_product/(?P<category_slug>[^/]+)/$', eedee.views.category_product, name='category_product'),
     url(r'^eedee/product_category/(?P<produc_id>[^/]+)/$', eedee.views.product_category_list, name='product_category'),

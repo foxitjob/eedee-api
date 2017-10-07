@@ -1,197 +1,197 @@
 {% extends "base.html" %}
 {% block body %}
-<!-- banner -->
-	<div class="banner">
-		<div class="container">
-<!-- header -->
-			<div class="header">
-					<div class="logo">
-					   <a href="index.html">
-						   <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
-						   LOGO Logo<span>网站标识待定</span>
-					   </a>
-					</div>
-					<div class="top-nav">
-						<span class="menu"><img src="/static/eedee/images/menu.png" alt=" " /></span>
-						<ul class="nav">
-							<li class="active"><a href="index.html">首页</a></li>
-							<li><a href="#">内科</a></li>
-							<li><a href="#">外科</a></li>
-							<li><a href="#">医技科</a></li>
-							<li><a href="#">关于我们</a></li>
-						</ul>
-								<!-- script-for-menu -->
-								 <script>
-								   $( "span.menu" ).click(function() {
-									 $( "ul.nav" ).slideToggle( 300, function() {
-									  });
-									 });
-								</script>
-								<!-- /script-for-menu -->
-					</div>
-					<div class="clearfix"> </div>
-			</div>
-<!-- //header -->
-			<div class="banner-info">
-				<form>
-					<input type="text"  placeholder="输入查询的产品..." required="">
-					<input type="submit" value="立即搜索" >
-				</form>
-			</div>
-			<div class="banner-info-grids">
-				<div class="col-md-4 banner-info-grid">
-					<div class="banner-info-grid1">
-						<div class="banner-info-grid-left">
-							<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						</div>
-						<div class="banner-info-grid-right">
-							<h4>广告位1</h4>
-							<p>价格：400/天</p>
-							<div class="more">
-								<a href="#">查看</a>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="col-md-4 banner-info-grid">
-					<div class="banner-info-grid1">
-						<div class="banner-info-grid-left">
-							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-						</div>
-						<div class="banner-info-grid-right">
-							<h4>广告位2</h4>
-							<p>价格：500/天</p>
-							<div class="more">
-								<a href="#">查看</a>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="col-md-4 banner-info-grid">
-					<div class="banner-info-grid1">
-						<div class="banner-info-grid-left">
-							<span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
-						</div>
-						<div class="banner-info-grid-right">
-							<h4>广告位3</h4>
-							<p>价格：400/天</p>
-							<div class="more">
-								<a href="#">查看</a>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //banner -->
+    <!-- banner -->
+    <div class="banner">
+        <div class="container">
+            <!-- header -->
+            <div class="header">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                        LOGO Logo<span>网站标识待定</span>
+                    </a>
+                </div>
+                <div class="top-nav">
+                    <span class="menu"><img src="/static/eedee/images/menu.png" alt=" "/></span>
+                    <ul class="nav">
+                        <li class="active"><a href="{% url 'index' %}">首页</a></li>
+                        <li><a href="#">内科</a></li>
+                        <li><a href="#">外科</a></li>
+                        <li><a href="#">医技科</a></li>
+                        <li><a href="#">关于我们</a></li>
+                    </ul>
+                    <!-- script-for-menu -->
+                    <script>
+                        $("span.menu").click(function () {
+                            $("ul.nav").slideToggle(300, function () {
+                            });
+                        });
+                    </script>
+                    <!-- /script-for-menu -->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- //header -->
+            <div class="banner-info">
+                <form>
+                    <input type="text" placeholder="输入查询的产品..." required="">
+                    <input type="submit" value="立即搜索">
+                </form>
+            </div>
+            <div class="banner-info-grids">
+                <div class="col-md-4 banner-info-grid">
+                    <div class="banner-info-grid1">
+                        <div class="banner-info-grid-left">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                        </div>
+                        <div class="banner-info-grid-right">
+                            <h4>广告位1</h4>
+                            <p>价格：400/天</p>
+                            <div class="more">
+                                <a href="#">查看</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 banner-info-grid">
+                    <div class="banner-info-grid1">
+                        <div class="banner-info-grid-left">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </div>
+                        <div class="banner-info-grid-right">
+                            <h4>广告位2</h4>
+                            <p>价格：500/天</p>
+                            <div class="more">
+                                <a href="#">查看</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 banner-info-grid">
+                    <div class="banner-info-grid1">
+                        <div class="banner-info-grid-left">
+                            <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
+                        </div>
+                        <div class="banner-info-grid-right">
+                            <h4>广告位3</h4>
+                            <p>价格：400/天</p>
+                            <div class="more">
+                                <a href="#">查看</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- //banner -->
 
-<!-- banner-bottom -->
-	<div class="banner-bottom">
-		<div class="banner-bottom-grid">
-			<div class="banner-bottom-left">
-				<div class="banner-bottom-left1 color1">
-					<h3>01.医技科医疗产品</h3>
-					<p>
-						<a href="#">检验科</a>
-						<a href="#">放射科</a>
-						<a href="#">超声影像科</a>
-						<a href="#">药剂科</a>
-						<a href="#">病理科</a>
-						<a href="#">输血科</a>
-						<a href="#">核医学科</a>
-						<a href="#">康复科</a>
-						<a href="#">营养科</a>
-						<a href="#">保健科</a>
-					</p>
-					<div class="banner-list">
-						<a href="#">查看更多</a>
-					</div>
+    <!-- banner-bottom -->
+    <div class="banner-bottom">
+        <div class="banner-bottom-grid">
+            <div class="banner-bottom-left">
+                <div class="banner-bottom-left1 color1">
+                    <h3>01.医技科医疗产品</h3>
+                    <p>
+                        <a href="{% url 'category_product' 'jyk' %}">检验科</a>
+                        <a href="{% url 'category_product' 'fsk' %}">放射科</a>
+                        <a href="{% url 'category_product' 'csyxk' %}">超声影像科</a>
+                        <a href="{% url 'category_product' 'yaojik' %}">药剂科</a>
+                        <a href="{% url 'category_product' 'blk' %}">病理科</a>
+                        <a href="{% url 'category_product' 'sxk' %}">输血科</a>
+                        <a href="{% url 'category_product' 'hyxk' %}">核医学科</a>
+                        <a href="{% url 'category_product' 'kfk' %}">康复科</a>
+                        <a href="{% url 'category_product' 'yyk' %}">营养科</a>
+                        <a href="{% url 'category_product' 'bjk' %}">保健科</a>
+                    </p>
+                    <div class="banner-list">
+                        <a href="#">查看更多</a>
+                    </div>
 
 
-				</div>
-			</div>
-			<div class="banner-bottom-right">
-				<div class="banner-bottom-right1 color2">
-					<h3>02.内科医疗产品</h3>
-					<p>
-						<a href="#">肾内科</a>
-						<a href="#">血液内科</a>
-						<a href="#">消化内科</a>
-						<a href="#">呼吸内科</a>
-						<a href="#">心内科</a>
-						<a href="#">风湿免疫内科</a>
-						<a href="#">神经内科</a>
-						<a href="#">内分泌内科</a>
-						<a href="#">妇科</a>
-						<a href="#">生殖内科</a>
-						<a href="#">老年病科</a>
-					</p>
-					<div class="banner-list">
-						<a href="#">查看更多</a>
-					</div>
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-		<div class="banner-bottom-grid">
-			<div class="banner-bottom-left banner-bottom-lft1">
-				<div class="banner-bottom-left1 color3">
-					<h3>03.外科医疗产品</h3>
-					<p>
-						<a href="#">心脏外科</a>
-						<a href="#">胸外科</a>
-						<a href="#">骨科</a>
-						<a href="#">神经外科</a>
-						<a href="#">泌尿外科</a>
-						<a href="#">血管外科</a>
-						<a href="#">肝脏外科</a>
-						<a href="#">胆胰外科</a>
-						<a href="#">胃肠外科</a>
-						<a href="#">肛肠外科</a>
-						<a href="#">甲状腺乳腺外科</a>
-						<a href="#">手足外科</a>
-						<a href="#">整形外科</a>
-					</p>
-					<div class="banner-list">
-						<a href="#">查看更多</a>
-					</div>
-				</div>
-			</div>
-			<div class="banner-bottom-right banner-bottom-rit1">
-				<div class="banner-bottom-right1 color4">
-					<h3>04. 更多医疗产品 </h3>
-					<p>
-						<a href="#">妇产科</a>
-					<a href="#">围产科</a>
-					<a href="#">肿瘤科</a>
-					<a href="#">皮肤病性病科</a>
-					<a href="#">麻醉科</a>
-					<a href="#">眼科</a>
-					<a href="#">疼痛科</a>
-					<a href="#">过敏反应科</a>
-					<a href="#">重症医学科</a>
-					<a href="#">耳鼻喉科</a>
-					<a href="#">口腔科</a>
-					<a href="#">急诊科</a>
-					<a href="#">中医科</a>
-					<a href="#">针灸科</a>
-					<a href="#">儿科</a>
-					<a href="#">心理科</a>
-					<a href="#">精神病科</a>
-					</p>
-					<div class="banner-list">
-					 <a href="#">查看更多</a>
-					</div>
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-<!-- //banner-bottom -->
+                </div>
+            </div>
+            <div class="banner-bottom-right">
+                <div class="banner-bottom-right1 color2">
+                    <h3>02.内科医疗产品</h3>
+                    <p>
+                        <a href="{% url 'category_product' 'snk' %}">肾内科</a>
+                        <a href="{% url 'category_product' 'xynk' %}">血液内科</a>
+                        <a href="{% url 'category_product' 'xhnk' %}">消化内科</a>
+                        <a href="{% url 'category_product' 'hxnk' %}">呼吸内科</a>
+                        <a href="{% url 'category_product' 'xnk' %}">心内科</a>
+                        <a href="{% url 'category_product' 'fsmynk' %}">风湿免疫内科</a>
+                        <a href="{% url 'category_product' 'sjnk' %}">神经内科</a>
+                        <a href="{% url 'category_product' 'nfmnk' %}">内分泌内科</a>
+                        <a href="{% url 'category_product' 'fk' %}">妇科</a>
+                        <a href="{% url 'category_product' 'sznk' %}">生殖内科</a>
+                        <a href="{% url 'category_product' 'lnbk' %}">老年病科</a>
+                    </p>
+                    <div class="banner-list">
+                        <a href="#">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="banner-bottom-grid">
+            <div class="banner-bottom-left banner-bottom-lft1">
+                <div class="banner-bottom-left1 color3">
+                    <h3>03.外科医疗产品</h3>
+                    <p>
+                        <a href="{% url 'category_product' 'xzwk' %}">心脏外科</a>
+                        <a href="{% url 'category_product' 'xwk' %}">胸外科</a>
+                        <a href="{% url 'category_product' 'gk' %}">骨科</a>
+                        <a href="{% url 'category_product' 'sjwk' %}">神经外科</a>
+                        <a href="{% url 'category_product' 'mlwk' %}">泌尿外科</a>
+                        <a href="{% url 'category_product' 'xgwk' %}">血管外科</a>
+                        <a href="{% url 'category_product' 'gzwk' %}">肝脏外科</a>
+                        <a href="{% url 'category_product' 'dywk' %}">胆胰外科</a>
+                        <a href="{% url 'category_product' 'cwwk' %}">胃肠外科</a>
+                        <a href="{% url 'category_product' 'gcwk' %}">肛肠外科</a>
+                        <a href="{% url 'category_product' 'jzxrxwk' %}">甲状腺乳腺外科</a>
+                        <a href="{% url 'category_product' 'szwk' %}">手足外科</a>
+                        <a href="{% url 'category_product' 'zxwk' %}">整形外科</a>
+                    </p>
+                    <div class="banner-list">
+                        <a href="#">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-bottom-right banner-bottom-rit1">
+                <div class="banner-bottom-right1 color4">
+                    <h3>04. 更多医疗产品 </h3>
+                    <p>
+                        <a href="{% url 'category_product' 'fck' %}">妇产科</a>
+                        <a href="{% url 'category_product' 'wck' %}">围产科</a>
+                        <a href="{% url 'category_product' 'zlk' %}">肿瘤科</a>
+                        <a href="{% url 'category_product' 'pfbxbk' %}">皮肤病性病科</a>
+                        <a href="{% url 'category_product' 'mzk' %}">麻醉科</a>
+                        <a href="{% url 'category_product' 'yanke' %}">眼科</a>
+                        <a href="{% url 'category_product' 'ttk' %}">疼痛科</a>
+                        <a href="{% url 'category_product' 'gmfyk' %}">过敏反应科</a>
+                        <a href="{% url 'category_product' 'zzyxk' %}">重症医学科</a>
+                        <a href="{% url 'category_product' 'ebhk' %}">耳鼻喉科</a>
+                        <a href="{% url 'category_product' 'kqk' %}">口腔科</a>
+                        <a href="{% url 'category_product' 'jzk' %}">急诊科</a>
+                        <a href="{% url 'category_product' 'zyk' %}">中医科</a>
+                        <a href="{% url 'category_product' 'zjk' %}">针灸科</a>
+                        <a href="{% url 'category_product' 'erk' %}">儿科</a>
+                        <a href="{% url 'category_product' 'xlk' %}">心理科</a>
+                        <a href="{% url 'category_product' 'jsbk' %}">精神病科</a>
+                    </p>
+                    <div class="banner-list">
+                        <a href="#">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //banner-bottom -->
 
 {% endblock body %}

@@ -70,6 +70,7 @@ class Product(models.Model):
 @python_2_unicode_compatible
 class Supplier(models.Model):
     name = models.CharField('经销商名称', max_length=100)
+    picture = models.ImageField(upload_to='uploads/supplier/images', blank=True, null=True)
     content = UEditorField('经销商介绍', height=300, width=1000,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
@@ -101,6 +102,7 @@ class Supplier(models.Model):
 @python_2_unicode_compatible
 class Manufacturer(models.Model):
     name = models.CharField('厂家名称', max_length=100)
+    picture = models.ImageField(upload_to='uploads/manufacturer/images', blank=True, null=True)
     content = UEditorField('厂家介绍', height=300, width=1000,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
