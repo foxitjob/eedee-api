@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block body %}
+<!-- banner : 主页之外用banner1 -->
+	<div class="banner1">
+		<div class="container">
+<!-- header -->
+			<div class="header">
+					<div class="logo">
+					   <a href="index.html">
+						   <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+						   LOGO Logo<span>网站标识待定</span>
+					   </a>
+					</div>
+					<div class="top-nav">
+						<span class="menu"><img src="images/menu.png" alt=" " /></span>
+						<ul class="nav">
+							<li class="active"><a href="index.html">首页</a></li>
+							<li><a href="#">内科</a></li>
+							<li><a href="#">外科</a></li>
+							<li><a href="#">医技科</a></li>
+							<li><a href="#">关于我们</a></li>
+						</ul>
+								<!-- script-for-menu -->
+								 <script>
+								   $( "span.menu" ).click(function() {
+									 $( "ul.nav" ).slideToggle( 300, function() {
+									       // Animation complete.
+									  });
+									 });
+								</script>
+								<!-- /script-for-menu -->
+					</div>
+					<div class="clearfix"> </div>
+			</div>
+<!-- //header -->
+<div class="banner-info banner-info2">
+				<form>
+					<input type="text"  placeholder="输入查询的产品..." required="">
+					<input type="submit" value="立即搜索" >
+				</form>
+			</div>
+			</div>
+	</div>
+
+<!--banner2-->
+<div class="banner2">
+     <div class="container">
+		<!--<h3 class="title">厂 家</h3>-->
+		<div class="single-grid">
+				<div class="col-md-8 blog-left">
+					<div class="blog-left-grid">
+
+                        {% for supplier in suppliers %}
+						<div class="blog-leftl">
+							<h4>供应商 <span>{{ supplier.index }}</span></h4>
+							<a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>收藏</a>
+						</div>
+						<div class="blog-leftr">
+							<img class="img-responsive" alt=" " src="images/15.jpg">
+							<h3>{{ supplier.name }}</h3>
+							<ul>
+								<li><a href="#"><i class="glyphicon glyphicon-user" aria-hidden="true"></i>分享</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>5 标签</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>10 评论</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-export" aria-hidden="true"></i>10 经销商</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-link" aria-hidden="true"></i>查看内容</a></li>
+							</ul>
+						</div>
+						<div class="clearfix"> </div>
+                        {% endfor %}
+
+					</div>
+				</div>
+				<div class="col-md-4 blog-right">
+					<h3>常见分类</h3>
+					<ul>
+						<li><a href="#">Aliquam erat volutpat</a></li>
+						<li><a href="#">Integer rutrum ante eu lacus</a></li>
+						<li><a href="#">Cum sociis natoque penatibus</a></li>
+						<li><a href="#">Mauris fermentum dictum magna</a></li>
+						<li><a href="#">Sed laoreet aliquam leo</a></li>
+						<li><a href="#">Cum sociis natoque penatibus</a></li>
+					</ul>
+					<div class="recent">
+						<h3>推荐产品（广告）</h3>
+						<div class="recent-grids">
+							<div class="recent-grid">
+								<div class="wom">
+									<a href="#"><img class="img-responsive" alt=" " src="images/6.jpg"></a>
+								</div>
+								<div class="wom-right">
+									<h4><a href="#">Integer rutrum ante eu</a></h4>
+									<p>Mauris fermentum dictum magna. Sed laoreet aliquam leo.
+										Ut tellus dolor, dapibus eget.</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="recent-grid">
+								<div class="wom">
+									<a href="#"><img class="img-responsive" alt=" " src="images/7.jpg"></a>
+								</div>
+								<div class="wom-right">
+									<h4><a href="#">Integer rutrum ante eu</a></h4>
+									<p>Mauris fermentum dictum magna. Sed laoreet aliquam leo.
+										Ut tellus dolor, dapibus eget.</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="recent-grid">
+								<div class="wom">
+									<a href="#"><img class="img-responsive" alt=" " src="images/8.jpg"></a>
+								</div>
+								<div class="wom-right">
+									<h4><a href="#">Integer rutrum ante eu</a></h4>
+									<p>Mauris fermentum dictum magna. Sed laoreet aliquam leo.
+										Ut tellus dolor, dapibus eget.</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+	</div>
+</div>
+
+{% endblock body %}

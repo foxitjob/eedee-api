@@ -117,7 +117,7 @@
 				<div class="special-info grid_1 simpleCart_shelfItem">
 					<h5>{{ product.name }}</h5>
 					<div class="item_tab">
-							<a href="#">厂家</a> | <a href="#">经销商</a>
+							<a href="{% url 'product_manufacturer' product.id %}">厂家</a> | <a href="{% url 'product_supplier' product.id %}">经销商</a>
 					</div>
 				</div>
 		</li>
