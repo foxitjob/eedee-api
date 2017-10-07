@@ -59,7 +59,7 @@
                             {% if supplier.picture %}
 							<img class="img-responsive" alt=" " src="/media/{{ supplier.picture }}">
                             {% endif %}
-							<h3>{{ supplier.name }}</h3>
+							<h3><a href="{% url 'supplier_detail' supplier.id %}">{{ supplier.name }}</a></h3>
 							<ul>
 								<li><a href="#"><i class="glyphicon glyphicon-user" aria-hidden="true"></i>分享</a></li>
 								<li><a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>5 标签</a></li>

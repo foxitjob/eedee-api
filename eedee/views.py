@@ -88,7 +88,7 @@ def manufacturer_detail(request, id):
     })
 
 
-def supplier_detail(request, produc_id):
+def supplier_detail(request, id):
     supplier = get_object_or_404(Supplier, pk=id)
 
     return render(request, 'supplier.html', {
