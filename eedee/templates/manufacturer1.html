@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+
+    <div>
+        厂家：{{ manufacturer.name }}
+    </div>
+
+    <div>
+        介绍 ：{{ manufacturer.content|safe }}
+    </div>
+
+    <div>
+        地址 ：{{ manufacturer.address }}
+    </div>
+
+    <div>
+        传真：{{ manufacturer.fax }}
+    </div>
+
+    <div>
+        邮编：{{ manufacturer.postcode }}
+    </div>
+{% endblock body %}

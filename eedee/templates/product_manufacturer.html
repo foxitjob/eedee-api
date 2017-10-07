@@ -12,9 +12,9 @@
 					   </a>
 					</div>
 					<div class="top-nav">
-						<span class="menu"><img src="images/menu.png" alt=" " /></span>
+						<span class="menu"><img src="/static/eedee/images/menu.png" alt=" " /></span>
 						<ul class="nav">
-							<li class="active"><a href="index.html">首页</a></li>
+							<li class="active"><a href="{% url 'index' %}">首页</a></li>
 							<li><a href="#">内科</a></li>
 							<li><a href="#">外科</a></li>
 							<li><a href="#">医技科</a></li>
@@ -51,12 +51,14 @@
 					<div class="blog-left-grid">
                         {% for manufacturer in manufacturers %}
 						<div class="blog-leftl">
-							<h4>厂家 <span>01</span></h4>
+							<h4>厂家 <span>{{ forloop.counter }}</span></h4>
 							<a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>收藏</a>
 						</div>
 						<div class="blog-leftr">
+                            {% if manufacturer.picture %}
 							<img class="img-responsive" alt=" " src="/media/{{ manufacturer.picture }}">
-							<h3>{{ manufacturer.name }}</h3>
+                            {% endif %}
+							<h3><a href="{% url 'manufacturer_detail' manufacturer.id %}">{{ manufacturer.name }}</a></h3>
 							<ul>
 								<li><a href="#"><i class="glyphicon glyphicon-user" aria-hidden="true"></i>分享</a></li>
 								<li><a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>5 标签</a></li>
@@ -85,7 +87,7 @@
 						<div class="recent-grids">
 							<div class="recent-grid">
 								<div class="wom">
-									<a href="#"><img class="img-responsive" alt=" " src="images/6.jpg"></a>
+									<a href="#"><img class="img-responsive" alt=" " src="/static/eedee/images/6.jpg"></a>
 								</div>
 								<div class="wom-right">
 									<h4><a href="#">Integer rutrum ante eu</a></h4>
@@ -96,7 +98,7 @@
 							</div>
 							<div class="recent-grid">
 								<div class="wom">
-									<a href="#"><img class="img-responsive" alt=" " src="images/7.jpg"></a>
+									<a href="#"><img class="img-responsive" alt=" " src="/static/eedee/images/7.jpg"></a>
 								</div>
 								<div class="wom-right">
 									<h4><a href="#">Integer rutrum ante eu</a></h4>
@@ -107,7 +109,7 @@
 							</div>
 							<div class="recent-grid">
 								<div class="wom">
-									<a href="#"><img class="img-responsive" alt=" " src="images/8.jpg"></a>
+									<a href="#"><img class="img-responsive" alt=" " src="/static/eedee/images/8.jpg"></a>
 								</div>
 								<div class="wom-right">
 									<h4><a href="#">Integer rutrum ante eu</a></h4>

@@ -34,8 +34,8 @@ urlpatterns = [
     # url(r'^eedee/product_category/(?P<produc_id>[^/]+)/$', eedee.views.product_category_list, name='product_category'),
     url(r'^eedee/product_manufacturer/(?P<produc_id>[^/]+)/$', eedee.views.product_manufacturer, name='product_manufacturer'),
     url(r'^eedee/product_supplier/(?P<produc_id>[^/]+)/$', eedee.views.product_supplier, name='product_supplier'),
-    # url(r'^eedee/manufacturer/(?P<id>[^/]+)/$', eedee.views.manufacturer_detail, name='manufacturer'),
-    # url(r'^eedee/supplier/(?P<id>[^/]+)/$', eedee.views.supplier_detail, name='supplier'),
+    url(r'^eedee/manufacturer/(?P<id>[^/]+)/$', eedee.views.manufacturer_detail, name='manufacturer_detail'),
+    url(r'^eedee/supplier/(?P<id>[^/]+)/$', eedee.views.supplier_detail, name='supplier_detail'),
 ]
 urlpatterns += staticfiles_urlpatterns()
 

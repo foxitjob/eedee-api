@@ -1,0 +1,27 @@
+<div class="header">
+    <div class="logo">
+        <a href="index.html">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+            LOGO Logo<span>网站标识待定</span>
+        </a>
+    </div>
+    <div class="top-nav">
+        <span class="menu"><img src="/static/eedee/images/menu.png" alt=" "/></span>
+        <ul class="nav">
+            <li class="active"><a href="{% url 'index' %}">首页</a></li>
+            <li><a href="#">内科</a></li>
+            <li><a href="#">外科</a></li>
+            <li><a href="#">医技科</a></li>
+            <li><a href="#">关于我们</a></li>
+        </ul>
+        <!-- script-for-menu -->
+        <script>
+            $("span.menu").click(function () {
+                $("ul.nav").slideToggle(300, function () {
+                });
+            });
+        </script>
+        <!-- /script-for-menu -->
+    </div>
+    <div class="clearfix"></div>
+</div>

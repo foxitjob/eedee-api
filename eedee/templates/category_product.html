@@ -14,7 +14,7 @@
 					<div class="top-nav">
 						<span class="menu"><img src="/static/eedee/images/menu.png" alt=" " /></span>
 						<ul class="nav">
-							<li class="active"><a href="index.html">首页</a></li>
+							<li class="active"><a href="{% url 'index' %}">首页</a></li>
 							<li><a href="#">内科</a></li>
 							<li><a href="#">外科</a></li>
 							<li><a href="#">医技科</a></li>
@@ -109,10 +109,14 @@
                 {% for product in products %}
 		<li>
 				<a href="#">
+                    {% if product.picture %}
 					<img class="img-responsive" alt="" src="/media/{{ product.picture }}">
+                    {% else %}
+                     <img class="img-responsive" alt="" src="/static/eedee/images/2017-10-08_010159.png">
 					<!--<span class="new-box">
 						<span class="new-label">新品</span>
 					</span>-->
+                    {% endif %}
 				</a>
 				<div class="special-info grid_1 simpleCart_shelfItem">
 					<h5>{{ product.name }}</h5>
