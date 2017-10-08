@@ -10,3 +10,7 @@ six
 xmltodict
 #for ImageField:
 Pillow
+#for search:
+django-haystack
+whoosh
+jieba

@@ -21,6 +21,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 import settings
 import eedee.views
+import eedee.search_views as search_views
 
 admin.site.site_header = '互联力量CMS'
 admin.site.site_title = '互联力量CMS'
@@ -36,6 +37,8 @@ urlpatterns = [
     url(r'^eedee/product_supplier/(?P<produc_id>[^/]+)/$', eedee.views.product_supplier, name='product_supplier'),
     url(r'^eedee/manufacturer/(?P<id>[^/]+)/$', eedee.views.manufacturer_detail, name='manufacturer_detail'),
     url(r'^eedee/supplier/(?P<id>[^/]+)/$', eedee.views.supplier_detail, name='supplier_detail'),
+    url(r'^search_test/', include('haystack.urls')),
+    url(r'^search/', search_views.MySeachView(), name='haystack_search'),
 ]
 urlpatterns += staticfiles_urlpatterns()
 

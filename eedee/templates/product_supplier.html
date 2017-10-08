@@ -15,9 +15,9 @@
 						<span class="menu"><img src="/static/eedee/images/menu.png" alt=" " /></span>
 						<ul class="nav">
 							<li class="active"><a href="{% url 'index' %}">首页</a></li>
-							<li><a href="#">内科</a></li>
-							<li><a href="#">外科</a></li>
-							<li><a href="#">医技科</a></li>
+                            <li><a href="/search/?q=内科">内科</a></li>
+                            <li><a href="/search/?q=外科">外科</a></li>
+                            <li><a href="/search/?q=医技科">医技科</a></li>
 							<li><a href="#">关于我们</a></li>
 						</ul>
 								<!-- script-for-menu -->
@@ -34,10 +34,10 @@
 			</div>
 <!-- //header -->
 <div class="banner-info banner-info2">
-				<form>
-					<input type="text"  placeholder="输入查询的产品..." required="">
-					<input type="submit" value="立即搜索" >
-				</form>
+                <form action="{% url 'haystack_search' %}">
+                    <input type="text" name="q" id="id_q" placeholder="输入查询的产品..." required="">
+                    <input type="submit" value="立即搜索">
+                </form>
 			</div>
 			</div>
 	</div>

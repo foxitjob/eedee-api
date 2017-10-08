@@ -58,8 +58,8 @@ class Product(models.Model):
     def get_product_category_url(self):
         return reverse('product_category', args=(self.pk,))
 
-    def get_absolute_url(self):
-        return reverse('product', args=(self.pk,))
+    # def get_absolute_url(self):
+    #     return reverse('product', args=(self.pk,))
 
     class Meta:
         verbose_name = '产品'
@@ -87,8 +87,8 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse('supplier', args=(self.pk,))
+    # def get_absolute_url(self):
+    #     return reverse('supplier', args=(self.pk,))
 
     def get_supplier_product_url(self):
         return reverse('supplier_product', args=(self.pk,))
@@ -115,8 +115,8 @@ class Manufacturer(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse('manufacturer', args=(self.pk,))
+    # def get_absolute_url(self):
+    #     return reverse('manufacturer', args=(self.pk,))
 
     def product_list(self):
         product_list = [product.name for product in self.products.all()]

@@ -53,7 +53,8 @@ def category_product(request, category_slug):
 
     return render(request, 'category_product.html', {
         'category': category,
-        'products': products
+        'products': products,
+        'advertisement': False
     })
 
 def product_manufacturer(request, produc_id):
@@ -62,6 +63,7 @@ def product_manufacturer(request, produc_id):
 
     return render(request, 'product_manufacturer.html', {
         'manufacturers': manufacturers,
+        'advertisement': False
     })
 
 def product_supplier(request, produc_id):
@@ -70,6 +72,7 @@ def product_supplier(request, produc_id):
 
     return render(request, 'product_supplier.html', {
         'suppliers': suppliers,
+        'advertisement': False
     })
 
 def product_category_list(request, produc_id):

@@ -45,7 +45,7 @@
 <!--banner2-->
 <div class="banner2">
      <div class="container">
-		<h3 class="title">{{ category.name }}产品列表</h3>
+		<h3 class="title">{{ query }}产品列表</h3>
          {% if advertisement %}
 		<div class="col-md-6 banner-left">
 			<div class="header-slider">
@@ -104,15 +104,16 @@
 	</div>
 </div>
 
+{% if query %}
 <div class="special">
 	<div class="container">
 		<div class="specia-top">
 			<ul class="grid_2">
-                {% for product in products %}
+                {% for result in page.object_list %}
 		<li>
 				<a href="#">
-                    {% if product.picture %}
-					<img class="img-responsive" alt="" src="/media/{{ product.picture }}">
+                    {% if result.object.picture %}
+					<img class="img-responsive" alt="" src="/media/{{ result.object.picture }}">
                     {% else %}
                      <img class="img-responsive" alt="" src="/static/eedee/images/2017-10-08_010159.png">
 					<!--<span class="new-box">
@@ -121,17 +122,34 @@
                     {% endif %}
 				</a>
 				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>{{ product.name }}</h5>
+					<h5>{{ result.object.name }}</h5>
 					<div class="item_tab">
-							<a href="{% url 'product_manufacturer' product.id %}">厂家</a> | <a href="{% url 'product_supplier' product.id %}">经销商</a>
+							<a href="{% url 'product_manufacturer' result.object.id %}">厂家</a> | <a href="{% url 'product_supplier' result.object.id %}">经销商</a>
 					</div>
 				</div>
 		</li>
+                {% empty %}
+                    <h5>抱歉,没有搜索到{{ query }}相关产品!</h5>
+                    <!-- if no result, this is empty message-->
                 {% endfor %}
 		<div class="clearfix"> </div>
 	</ul>
+            {% if page.has_previous or page.has_next %}
+            <div>
+                {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}« 上一页{% if page.has_previous %}</a>{% endif %}
+                |
+                {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}下一页 »{% if page.has_next %}</a>{% endif %}
+            </div>
+            {% endif %}
 		</div>
+
 	</div>
 </div>
+
+
+
+{% else %}
+    <h5>条件</h5>
+{% endif %}
 
 {% endblock body %}
