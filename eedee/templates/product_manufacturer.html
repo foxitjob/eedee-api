@@ -75,12 +75,9 @@
 				<div class="col-md-4 blog-right">
 					<h3>常见分类</h3>
 					<ul>
-						<li><a href="#">Aliquam erat volutpat</a></li>
-						<li><a href="#">Integer rutrum ante eu lacus</a></li>
-						<li><a href="#">Cum sociis natoque penatibus</a></li>
-						<li><a href="#">Mauris fermentum dictum magna</a></li>
-						<li><a href="#">Sed laoreet aliquam leo</a></li>
-						<li><a href="#">Cum sociis natoque penatibus</a></li>
+                        {% for category in categorys %}
+						<li><a href="{% url 'category_product' category.slug  %}">{{ category.name }}</a></li>
+                        {% endfor %}
 					</ul>
 					<div class="recent">
 						<h3>推荐产品（广告）</h3>

@@ -57,23 +57,36 @@ def category_product(request, category_slug):
         'advertisement': False
     })
 
+
 def product_manufacturer(request, produc_id):
     product = get_object_or_404(Product, pk=produc_id)
     manufacturers = product.manufacturer_set.all()
+    if product.category.parent:
+        categorys = product.category.parent.category_set.all()
+    else:
+        categorys = product.category.category_set.all()
 
     return render(request, 'product_manufacturer.html', {
         'manufacturers': manufacturers,
+        'categorys': categorys,
         'advertisement': False
     })
+
 
 def product_supplier(request, produc_id):
     product = get_object_or_404(Product, pk=produc_id)
     suppliers = product.supplier_set.all()
+    if product.category.parent:
+        categorys = product.category.parent.category_set.all()
+    else:
+        categorys = product.category.category_set.all()
 
     return render(request, 'product_supplier.html', {
         'suppliers': suppliers,
+        'categorys': categorys,
         'advertisement': False
     })
+
 
 def product_category_list(request, produc_id):
     product = get_object_or_404(Product, pk=produc_id)

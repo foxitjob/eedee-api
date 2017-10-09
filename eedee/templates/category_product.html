@@ -127,6 +127,9 @@
 					</div>
 				</div>
 		</li>
+                {% empty %}
+                    <h5>抱歉,该类别暂无相关产品!</h5>
+                    <!-- if no result, this is empty message-->
                 {% endfor %}
 		<div class="clearfix"> </div>
 	</ul>
