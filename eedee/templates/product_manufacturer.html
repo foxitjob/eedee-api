@@ -79,6 +79,7 @@
 						<li><a href="{% url 'category_product' category.slug  %}">{{ category.name }}</a></li>
                         {% endfor %}
 					</ul>
+                    {% if recommand %}
 					<div class="recent">
 						<h3>推荐产品（广告）</h3>
 						<div class="recent-grids">
@@ -117,6 +118,7 @@
 							</div>
 						</div>
 					</div>
+                    {% endif %}
 
 
 				</div>
