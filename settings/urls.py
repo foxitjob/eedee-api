@@ -27,6 +27,7 @@ admin.site.site_header = '互联力量CMS'
 admin.site.site_title = '互联力量CMS'
 
 urlpatterns = [
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
     url(r'^ueditor/', include('DjangoUeditor.urls'),),
     url(r'^$', eedee.views.index, name='index'),
@@ -39,7 +40,7 @@ urlpatterns = [
     url(r'^eedee/supplier/(?P<id>[^/]+)/$', eedee.views.supplier_detail, name='supplier_detail'),
     url(r'^search_test/', include('haystack.urls')),
     url(r'^search/', search_views.MySeachView(), name='haystack_search'),
-    url('^api/', include('api.urls', namespace='api')),
+    url(r'^api/', include('api.urls', namespace='api')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 

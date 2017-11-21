@@ -14,3 +14,8 @@ Pillow
 django-haystack
 whoosh
 jieba
+#for rest API:
+django-filter
+django-rest-swagger
+djangorestframework
+djangorestframework-filters
