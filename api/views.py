@@ -11,6 +11,95 @@ from rest_framework.views import APIView
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from django.core.urlresolvers import reverse
+from rest_framework import viewsets
+import rest_framework_filters as filters
+from rest_framework.decorators import detail_route, list_route
+from eedee.models import *
+from serializers import *
+from filters import *
+from rest_framework.pagination import PageNumberPagination
+
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 100
+    page_size_query_param = 'page_size'
+    max_page_size = 200
+
+
+class ManufacturerViewSet(viewsets.ModelViewSet):
+    """
+    List, retrieve, add, update or delete Manufacturer.
+    """
+    queryset = Manufacturer.objects.all()
+    serializer_class = ManufacturerSerializer
+    filter_class = ManufacturerFilter
+    pagination_class = StandardResultsSetPagination
+
+    @list_route(methods=['get'], url_path='detail')
+    def list_detail(self, request, *args, **kwargs):
+        """
+        List Datacenter with detail information.
+        """
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = ManufacturerDetailSerializer(queryset, many=True)
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            return self.get_paginated_response(serializer.data)
+        return Response(serializer.data)
+
+    @detail_route(methods=['get'], url_path='detail')
+    def detail(self, request, pk=None):
+        """
+        Retrieve Datacenter with detail information.
+        """
+        queryset = Manufacturer.objects.get(pk=pk)
+        data = ManufacturerDetailSerializer(queryset).data
+        return Response(data)
+
+
+class SupplierViewSet(viewsets.ModelViewSet):
+    """
+    List, retrieve, add, update or delete Supplier.
+    """
+    queryset = Supplier.objects.all()
+    serializer_class = SupplierSerializer
+    filter_class = SupplierFilter
+    pagination_class = StandardResultsSetPagination
+
+    @list_route(methods=['get'], url_path='detail')
+    def list_detail(self, request, *args, **kwargs):
+        """
+        List Supplier with detail information.
+        """
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = SupplierDetailSerializer(queryset, many=True)
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            return self.get_paginated_response(serializer.data)
+        return Response(serializer.data)
+
+    @detail_route(methods=['get'], url_path='detail')
+    def detail(self, request, pk=None):
+        """
+        Retrieve Supplier with detail information.
+        """
+        queryset = Supplier.objects.get(pk=pk)
+        data = SupplierDetailSerializer(queryset).data
+        return Response(data)
+
+
+class ApiRootView(APIView):
+    # authentication_classes = []
+    permission_classes = (AllowAny,)
+    view_name = 'REST API'
+
+    def get(self, request, format=None):
+        """ List supported API versions. """
+        current = reverse('api:api_root_view', args=[]) + 'v1'
+        data = dict(description='EEDEE REST API', current_version=current, available_versions=dict(v1=current))
+        return Response(data)
 
 
 class ExampleView(APIView):

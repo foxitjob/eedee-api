@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_swagger',
+    'django_filters',
     'DjangoUeditor',
     'eedee',
     'haystack'
@@ -155,3 +158,25 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # upload folder
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+
+        # 'sod_lvm.authentication.LDAPAuthentication',
+        # 'sod_lvm.authentication.IDMAuthentication',
+
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework_filters.backends.DjangoFilterBackend',
+        # 'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}

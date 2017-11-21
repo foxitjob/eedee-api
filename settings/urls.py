@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^eedee/supplier/(?P<id>[^/]+)/$', eedee.views.supplier_detail, name='supplier_detail'),
     url(r'^search_test/', include('haystack.urls')),
     url(r'^search/', search_views.MySeachView(), name='haystack_search'),
+    url('^api/', include('api.urls', namespace='api')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 
