@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'haystack'
 ]
 
+
+# 全文检索功能
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'eedee.whoosh_cn_backend.WhooshEngine',
@@ -149,7 +151,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static_common'),
@@ -180,3 +182,21 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     )
 }
+
+# DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
+# STATICFILES_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'
+# QINIU_ACCESS_KEY = 'ldslupFwomOpHYUNB_1wa_jpJfkLry2Y_5JsqsCW'
+# QINIU_SECRET_KEY = 'vGDw1tq0t9lyLsyCvybx3myJXN4G6ZG_hBmPEfFo'
+# QINIU_BUCKET_NAME = 'eedee-api'
+# QINIU_BUCKET_DOMAIN = 'p18pint1l.bkt.clouddn.com'
+#
+# # upload folder
+# PREFIX_URL = 'http://'
+# MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# STATIC_URL = QINIU_BUCKET_DOMAIN + '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static_common'),
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

@@ -23,7 +23,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 100
+    page_size = 20
     page_size_query_param = 'page_size'
     max_page_size = 200
 
@@ -89,6 +89,36 @@ class SupplierViewSet(viewsets.ModelViewSet):
         data = SupplierDetailSerializer(queryset).data
         return Response(data)
 
+class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    List, retrieve, add, update or delete Supplier.
+    """
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    filter_class = CategoryFilter
+    pagination_class = StandardResultsSetPagination
+
+    @list_route(methods=['get'], url_path='detail')
+    def list_detail(self, request, *args, **kwargs):
+        """
+        List Supplier with detail information.
+        """
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = CategoryDetailSerializer(queryset, many=True)
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = CategoryDetailSerializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        return Response(serializer.data)
+
+    @detail_route(methods=['get'], url_path='detail')
+    def detail(self, request, pk=None):
+        """
+        Retrieve Supplier with detail information.
+        """
+        queryset = Category.objects.get(pk=pk)
+        data = CategoryDetailSerializer(queryset).data
+        return Response(data)
 
 class ApiRootView(APIView):
     # authentication_classes = []

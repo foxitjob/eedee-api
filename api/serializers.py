@@ -26,3 +26,16 @@ class SupplierDetailSerializer(serializers.ModelSerializer):
         model = Supplier
         fields = '__all__'
         depth = 3
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+
+class CategoryDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+        depth = 3

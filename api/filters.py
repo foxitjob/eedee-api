@@ -10,3 +10,8 @@ class SupplierFilter(filters.FilterSet):
     class Meta:
         model = Supplier
         fields = ['phone', 'fax', 'postcode']
+
+class CategoryFilter(filters.FilterSet):
+    class Meta:
+        model = Category
+        fields = ['name',]

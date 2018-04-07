@@ -7,6 +7,7 @@ schema_view = get_swagger_view(title='EEDEE API')
 v1_apiRouter = routers.DefaultRouter(trailing_slash=False)
 v1_apiRouter.register(r'manufacturers', ManufacturerViewSet, 'manufacturers')
 v1_apiRouter.register(r'suppliers', SupplierViewSet, 'suppliers')
+v1_apiRouter.register(r'categories', CategoryViewSet, 'categories')
 
 urlpatterns = [
     url('^$', ApiRootView.as_view(), name='api_root_view'),
