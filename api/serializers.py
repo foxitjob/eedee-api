@@ -2,6 +2,19 @@ from rest_framework import serializers
 from eedee.models import *
 
 
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+
+class ProductDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        depth = 3
+
+
 class ManufacturerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Manufacturer

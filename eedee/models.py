@@ -53,7 +53,7 @@ class Product(models.Model):
         return self.name
 
     def show_picture(self):
-        return format_html('<a href=/media/%s><img src=/media/%s></a>' % (self.picture,self.picture))
+        return format_html('<a href=/media/%s><img src=/media/%s></a>' % (self.picture, self.picture))
 
     def get_product_category_url(self):
         return reverse('product_category', args=(self.pk,))
@@ -74,7 +74,7 @@ class Supplier(models.Model):
     content = UEditorField('经销商介绍', height=300, width=1000,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
-    products = models.ManyToManyField(Product, verbose_name='产品列表', )
+    products = models.ManyToManyField(Product, verbose_name='产品列表', blank=True)
     address = models.CharField('地址', max_length=200, blank=True)
     phone = models.CharField('电话', max_length=50, blank=True)
     fax = models.CharField('传真', max_length=50, blank=True)
@@ -106,7 +106,7 @@ class Manufacturer(models.Model):
     content = UEditorField('厂家介绍', height=300, width=1000,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
-    products = models.ManyToManyField(Product, verbose_name='产品列表', )
+    products = models.ManyToManyField(Product, verbose_name='产品列表', blank=True)
     address = models.CharField('地址', max_length=200, blank=True)
     phone = models.CharField('电话', max_length=50, blank=True)
     fax = models.CharField('传真', max_length=50, blank=True)

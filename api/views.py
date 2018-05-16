@@ -28,6 +28,37 @@ class StandardResultsSetPagination(PageNumberPagination):
     max_page_size = 200
 
 
+class ProductViewSet(viewsets.ModelViewSet):
+    """
+    List, retrieve, add, update or delete Product.
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    filter_class = ProductFilter
+    pagination_class = StandardResultsSetPagination
+
+    @list_route(methods=['get'], url_path='detail')
+    def list_detail(self, request, *args, **kwargs):
+        """
+        List Product with detail information.
+        """
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = ProductDetailSerializer(queryset, many=True)
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            return self.get_paginated_response(serializer.data)
+        return Response(serializer.data)
+
+    @detail_route(methods=['get'], url_path='detail')
+    def detail(self, request, pk=None):
+        """
+        Retrieve Product with detail information.
+        """
+        queryset = Product.objects.get(pk=pk)
+        data = ProductDetailSerializer(queryset).data
+        return Response(data)
+
+
 class ManufacturerViewSet(viewsets.ModelViewSet):
     """
     List, retrieve, add, update or delete Manufacturer.
@@ -89,19 +120,21 @@ class SupplierViewSet(viewsets.ModelViewSet):
         data = SupplierDetailSerializer(queryset).data
         return Response(data)
 
+
 class CategoryViewSet(viewsets.ModelViewSet):
     """
-    List, retrieve, add, update or delete Supplier.
+    List, retrieve, add, update or delete Category.
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     filter_class = CategoryFilter
-    pagination_class = StandardResultsSetPagination
+
+    # pagination_class = StandardResultsSetPagination
 
     @list_route(methods=['get'], url_path='detail')
     def list_detail(self, request, *args, **kwargs):
         """
-        List Supplier with detail information.
+        List Category with detail information.
         """
         queryset = self.filter_queryset(self.get_queryset())
         serializer = CategoryDetailSerializer(queryset, many=True)
@@ -114,11 +147,12 @@ class CategoryViewSet(viewsets.ModelViewSet):
     @detail_route(methods=['get'], url_path='detail')
     def detail(self, request, pk=None):
         """
-        Retrieve Supplier with detail information.
+        Retrieve Category with detail information.
         """
         queryset = Category.objects.get(pk=pk)
         data = CategoryDetailSerializer(queryset).data
         return Response(data)
+
 
 class ApiRootView(APIView):
     # authentication_classes = []
