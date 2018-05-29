@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,9 +45,9 @@ INSTALLED_APPS = [
     'django_filters',
     'DjangoUeditor',
     'eedee',
-    'haystack'
+    'haystack',
+    'mptt'
 ]
-
 
 # 全文检索功能
 HAYSTACK_CONNECTIONS = {

@@ -5,9 +5,34 @@ from django.utils.encoding import python_2_unicode_compatible
 from DjangoUeditor.models import UEditorField
 from django.core.urlresolvers import reverse
 from django.utils.html import format_html
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 # Create your models here.
+
+@python_2_unicode_compatible
+class Category1(MPTTModel):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.CharField('网址', max_length=32, unique=True)
+    is_active = models.BooleanField(default=False)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
+    order = models.PositiveIntegerField()
+
+    class MPTTMeta:
+        order_insertion_by = ['order']
+
+    class Meta:
+        verbose_name = ''
+        verbose_name_plural = '科室分类1'
+
+    # It is required to rebuild tree after save, when using order for mptt-tree
+    def save(self, *args, **kwargs):
+        super(Category1, self).save(*args, **kwargs)
+        Category1.objects.rebuild()
+
+    def __str__(self):
+        return self.name
+
 
 @python_2_unicode_compatible
 class Category(models.Model):

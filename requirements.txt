@@ -19,3 +19,5 @@ django-filter
 django-rest-swagger
 djangorestframework
 djangorestframework-filters
+django-suit
+django-mptt
