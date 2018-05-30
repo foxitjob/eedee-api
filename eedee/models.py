@@ -6,40 +6,63 @@ from DjangoUeditor.models import UEditorField
 from django.core.urlresolvers import reverse
 from django.utils.html import format_html
 from mptt.models import MPTTModel, TreeForeignKey
+from settings.settings import MEDIA_ROOT
+from django.db.models.fields.files import ImageFieldFile
+import os
 
 
 # Create your models here.
 
-@python_2_unicode_compatible
+
 class Category1(MPTTModel):
-    name = models.CharField(max_length=50, unique=True)
-    slug = models.CharField('网址', max_length=32, unique=True)
-    is_active = models.BooleanField(default=False)
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
-    order = models.PositiveIntegerField()
+    name = models.CharField(max_length=64)
+    slug = models.CharField(max_length=64)
+    parent = TreeForeignKey('self', null=True, blank=True,
+                            related_name='children')
+    is_active = models.BooleanField()
+    order = models.IntegerField()
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Categories1"
 
     class MPTTMeta:
         order_insertion_by = ['order']
 
-    class Meta:
-        verbose_name = ''
-        verbose_name_plural = '科室分类1'
-
-    # It is required to rebuild tree after save, when using order for mptt-tree
     def save(self, *args, **kwargs):
         super(Category1, self).save(*args, **kwargs)
         Category1.objects.rebuild()
 
-    def __str__(self):
+
+class Category2(MPTTModel):
+    name = models.CharField(max_length=64)
+    slug = models.CharField(max_length=64)
+    parent = TreeForeignKey('self', null=True, blank=True,
+                            related_name='children')
+
+    def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Categories2"
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
+
+    def save(self, *args, **kwargs):
+        super(Category2, self).save(*args, **kwargs)
+        Category2.objects.rebuild()
 
 
 @python_2_unicode_compatible
-class Category(models.Model):
+class Category(MPTTModel):
     name = models.CharField('科室名称', max_length=100)
     slug = models.CharField('网址', max_length=32, unique=True)
-    parent = models.ForeignKey('self', blank=True, null=True)
-    sequence = models.IntegerField('排列顺序', blank=True, null=True)
+    parent = TreeForeignKey('self', blank=True, null=True)
+    is_active = models.BooleanField()
+    order = models.IntegerField('排列顺序', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -62,9 +85,12 @@ class Category(models.Model):
     def get_category_product_url(self):
         return reverse('category_product', args=(self.slug,))
 
+    def save(self, *args, **kwargs):
+        super(Category, self).save(*args, **kwargs)
+        Category.objects.rebuild()
+
     class Meta:
-        # unique_together = ("slug", "parent")
-        verbose_name = ''
+        verbose_name = '科室分类'
         verbose_name_plural = '科室分类'
 
 
@@ -96,7 +122,7 @@ class Product(models.Model):
 class Supplier(models.Model):
     name = models.CharField('经销商名称', max_length=100)
     picture = models.ImageField(upload_to='uploads/supplier/images', blank=True, null=True)
-    content = UEditorField('经销商介绍', height=300, width=1000,
+    content = UEditorField('经销商介绍', height=300, width=680,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
     products = models.ManyToManyField(Product, verbose_name='产品列表', blank=True)
@@ -128,7 +154,7 @@ class Supplier(models.Model):
 class Manufacturer(models.Model):
     name = models.CharField('厂家名称', max_length=100)
     picture = models.ImageField(upload_to='uploads/manufacturer/images', blank=True, null=True)
-    content = UEditorField('厂家介绍', height=300, width=1000,
+    content = UEditorField('厂家介绍', height=300, width=680,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
     products = models.ManyToManyField(Product, verbose_name='产品列表', blank=True)
@@ -150,4 +176,21 @@ class Manufacturer(models.Model):
     class Meta:
         verbose_name = '厂家'
         verbose_name_plural = '厂家'
+        # ordering = ['category', ]  # 按照哪个栏目排序
+
+
+@python_2_unicode_compatible
+class Image(models.Model):
+    title = models.CharField('标题', max_length=100)
+    classify = models.CharField('分类', choices=[('product', 'Product'), ('manufacturer', 'Panufacturer')], max_length=50)
+    image = models.ImageField('图片', upload_to='uploads/images', blank=True, null=True)
+    created_on = models.DateTimeField('创建日期', auto_now_add=True)
+    updated_on = models.DateTimeField('更新日期', auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = '图片库'
+        verbose_name_plural = '图片库'
         # ordering = ['category', ]  # 按照哪个栏目排序

@@ -1,4 +1,3 @@
-sixrequests
 gunicorn
 gevent
 Django
