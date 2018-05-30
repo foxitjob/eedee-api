@@ -48,19 +48,66 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ('id',)
 
 
+class supplier_imagesInline(admin.TabularInline):
+    # form = CityInlineForm
+    model = Supplier.images.through
+    extra = 3
+    verbose_name = '经销商图片'
+    verbose_name_plural = '经销商图片'
+    # suit_classes = 'suit-tab suit-tab-cities'
+
+
+class supplier_product_imagesInLine(admin.TabularInline):
+    # form = CityInlineForm
+    model = Supplier.product_images.through
+    extra = 3
+    verbose_name = '产品图片'
+    verbose_name_plural = '产品图片'
+    # suit_classes = 'suit-tab suit-tab-cities'
+
+
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'product_list', 'picture')
     filter_horizontal = ('products',)
+    inlines = (supplier_imagesInline, supplier_product_imagesInLine)
+    exclude = ('images', 'product_images')
+
+
+class ImagesInline(admin.TabularInline):
+    # form = CityInlineForm
+    model = Image
+    extra = 3
+    verbose_name_plural = '厂家图片'
+    # suit_classes = 'suit-tab suit-tab-cities'
+
+
+class manufacturer_imagesInline(admin.TabularInline):
+    # form = CityInlineForm
+    model = Manufacturer.images.through
+    extra = 3
+    verbose_name = '厂家图片'
+    verbose_name_plural = '厂家图片'
+    # suit_classes = 'suit-tab suit-tab-cities'
+
+
+class manufacturer_product_imagesInLine(admin.TabularInline):
+    # form = CityInlineForm
+    model = Manufacturer.product_images.through
+    extra = 3
+    verbose_name = '产品图片'
+    verbose_name_plural = '产品图片'
+    # suit_classes = 'suit-tab suit-tab-cities'
 
 
 class ManufacturerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'product_list', 'picture')
     filter_horizontal = ('products',)
+    inlines = (manufacturer_imagesInline, manufacturer_product_imagesInLine)
+    exclude = ('images', 'product_images')
 
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'classify', 'image')
-    list_filter = ('classify',)
+    list_display = ('id', 'title', 'image')
 
 
 # admin.site.register(Category2, Category2Admin)
