@@ -11,13 +11,13 @@ class ProductFilter(filters.FilterSet):
 class ManufacturerFilter(filters.FilterSet):
     class Meta:
         model = Manufacturer
-        fields = ['phone', 'fax', 'postcode']
+        fields = []
 
 
 class SupplierFilter(filters.FilterSet):
     class Meta:
         model = Supplier
-        fields = ['phone', 'fax', 'postcode']
+        fields = []
 
 
 class CategoryFilter(filters.FilterSet):

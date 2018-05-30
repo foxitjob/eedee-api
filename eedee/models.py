@@ -95,6 +95,23 @@ class Category(MPTTModel):
 
 
 @python_2_unicode_compatible
+class Image(models.Model):
+    title = models.CharField('标题', max_length=100)
+    classify = models.CharField('分类', choices=[('product', 'Product'), ('manufacturer', 'Panufacturer')], max_length=50)
+    image = models.ImageField('图片', upload_to='uploads/images', blank=True, null=True)
+    created_on = models.DateTimeField('创建日期', auto_now_add=True)
+    updated_on = models.DateTimeField('更新日期', auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = '图片库'
+        verbose_name_plural = '图片库'
+        # ordering = ['category', ]  # 按照哪个栏目排序
+
+
+@python_2_unicode_compatible
 class Product(models.Model):
     name = models.CharField('产品名称', max_length=100)
     category = models.ForeignKey(Category)
@@ -113,8 +130,8 @@ class Product(models.Model):
     #     return reverse('product', args=(self.pk,))
 
     class Meta:
-        verbose_name = '产品'
-        verbose_name_plural = '产品'
+        verbose_name = '产品类别'
+        verbose_name_plural = '产品类别'
         ordering = ['category', ]  # 按照哪个栏目排序
 
 
@@ -122,14 +139,23 @@ class Product(models.Model):
 class Supplier(models.Model):
     name = models.CharField('经销商名称', max_length=100)
     picture = models.ImageField(upload_to='uploads/supplier/images', blank=True, null=True)
+    images = models.ManyToManyField(Image, verbose_name='供应商图片', blank=True, related_name='supplier_images')
+    product_images = models.ManyToManyField(Image, verbose_name='产品图片', blank=True,
+                                            related_name='supplier_product_images')
     content = UEditorField('经销商介绍', height=300, width=680,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
-    products = models.ManyToManyField(Product, verbose_name='产品列表', blank=True)
+    products = models.ManyToManyField(Product, verbose_name='产品类别列表', blank=True)
+    contact = models.CharField('联系人', max_length=200, blank=True)
+    contact_job_title = models.CharField('联系人职位', max_length=200, blank=True)
+    sale_phone = models.CharField('销售热线', max_length=50, blank=True)
+    consult_phone = models.CharField('咨询热线', max_length=50, blank=True)
+    complain_phone = models.CharField('投诉热线', max_length=50, blank=True)
     address = models.CharField('地址', max_length=200, blank=True)
-    phone = models.CharField('电话', max_length=50, blank=True)
     fax = models.CharField('传真', max_length=50, blank=True)
-    postcode = models.CharField('邮编', max_length=50, blank=True)
+    email = models.CharField('邮箱', max_length=50, blank=True)
+    website = models.URLField('企业官网', max_length=50, blank=True)
+    is_free_inquiry = models.BooleanField()
 
     def product_list(self):
         product_list = [product.name for product in self.products.all()]
@@ -154,14 +180,23 @@ class Supplier(models.Model):
 class Manufacturer(models.Model):
     name = models.CharField('厂家名称', max_length=100)
     picture = models.ImageField(upload_to='uploads/manufacturer/images', blank=True, null=True)
+    images = models.ManyToManyField(Image, verbose_name='厂家图片', blank=True, related_name='manufacturer_images')
+    product_images = models.ManyToManyField(Image, verbose_name='产品图片', blank=True,
+                                            related_name='manufacturer_product_images')
     content = UEditorField('厂家介绍', height=300, width=680,
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
-    products = models.ManyToManyField(Product, verbose_name='产品列表', blank=True)
+    products = models.ManyToManyField(Product, verbose_name='产品类别列表', blank=True)
+    contact = models.CharField('联系人', max_length=200, blank=True)
+    contact_job_title = models.CharField('联系人职位', max_length=200, blank=True)
+    sale_phone = models.CharField('销售热线', max_length=50, blank=True)
+    consult_phone = models.CharField('咨询热线', max_length=50, blank=True)
+    complain_phone = models.CharField('投诉热线', max_length=50, blank=True)
     address = models.CharField('地址', max_length=200, blank=True)
-    phone = models.CharField('电话', max_length=50, blank=True)
     fax = models.CharField('传真', max_length=50, blank=True)
-    postcode = models.CharField('邮编', max_length=50, blank=True)
+    email = models.CharField('邮箱', max_length=50, blank=True)
+    website = models.URLField('企业官网', max_length=50, blank=True)
+    is_free_inquiry = models.BooleanField()
 
     def __str__(self):
         return self.name
@@ -176,21 +211,4 @@ class Manufacturer(models.Model):
     class Meta:
         verbose_name = '厂家'
         verbose_name_plural = '厂家'
-        # ordering = ['category', ]  # 按照哪个栏目排序
-
-
-@python_2_unicode_compatible
-class Image(models.Model):
-    title = models.CharField('标题', max_length=100)
-    classify = models.CharField('分类', choices=[('product', 'Product'), ('manufacturer', 'Panufacturer')], max_length=50)
-    image = models.ImageField('图片', upload_to='uploads/images', blank=True, null=True)
-    created_on = models.DateTimeField('创建日期', auto_now_add=True)
-    updated_on = models.DateTimeField('更新日期', auto_now=True)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = '图片库'
-        verbose_name_plural = '图片库'
         # ordering = ['category', ]  # 按照哪个栏目排序
