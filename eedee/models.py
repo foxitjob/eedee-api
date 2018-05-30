@@ -93,7 +93,7 @@ class Category(MPTTModel):
 
 @python_2_unicode_compatible
 class Image(models.Model):
-    title = models.CharField('标题', max_length=100, blank=True, null=True)
+    title = models.CharField('标题', max_length=100)
     # classify = models.CharField('分类', choices=[('product', 'Product'), ('manufacturer', 'Panufacturer')], max_length=50,
     #                             blank=True, null=True)
     image = models.ImageField('图片', upload_to='uploads/images', blank=True, null=True)
