@@ -45,7 +45,8 @@ class CategoryAdmin(MPTTModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'category', 'picture')
     list_filter = ('category',)
-    ordering = ('id',)
+    list_display_links = ('name',)
+    ordering = ('category', 'id',)
 
 
 class supplier_imagesInline(admin.TabularInline):
@@ -70,6 +71,7 @@ class SupplierAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'product_list', 'picture')
     filter_horizontal = ('products',)
     inlines = (supplier_imagesInline, supplier_product_imagesInLine)
+    list_display_links = ('name',)
     exclude = ('images', 'product_images')
 
 
@@ -102,6 +104,7 @@ class manufacturer_product_imagesInLine(admin.TabularInline):
 class ManufacturerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'product_list', 'picture')
     filter_horizontal = ('products',)
+    list_display_links = ('name',)
     inlines = (manufacturer_imagesInline, manufacturer_product_imagesInLine)
     exclude = ('images', 'product_images')
 
