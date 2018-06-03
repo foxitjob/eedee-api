@@ -5,6 +5,8 @@ from suit.admin import SortableModelAdmin
 from mptt.admin import MPTTModelAdmin
 from django.contrib import admin
 from models import *
+from import_export.admin import ImportExportModelAdmin
+from import_export import resources
 
 
 # Register your models here.
@@ -67,12 +69,26 @@ class supplier_product_imagesInLine(admin.TabularInline):
     # suit_classes = 'suit-tab suit-tab-cities'
 
 
-class SupplierAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'product_list', 'picture')
+class SupplierResource(resources.ModelResource):
+    class Meta:
+        model = Supplier
+        fields = ('id', 'name', 'content', 'buy_product', 'agent_product', 'sell_area', 'contact',
+                  'contact_job_title', 'sale_phone', 'consult_phone', 'complain_phone', 'address',
+                  'fax', 'email', 'website', 'is_free_inquiry',)
+        skip_unchanged = True
+        report_skipped = False
+
+
+class SupplierAdmin(ImportExportModelAdmin):
+    list_display = ('name', 'picture', 'is_free_inquiry')
+    # list_display = ('name', 'content', 'buy_product', 'agent_product', 'sell_area', 'contact',
+    #                 'contact_job_title', 'sale_phone', 'consult_phone', 'complain_phone', 'address',
+    #                 'fax', 'email', 'website', 'is_free_inquiry')
     filter_horizontal = ('products',)
     inlines = (supplier_imagesInline, supplier_product_imagesInLine)
     list_display_links = ('name',)
     exclude = ('images', 'product_images')
+    resource_class = SupplierResource
 
 
 class ImagesInline(admin.TabularInline):

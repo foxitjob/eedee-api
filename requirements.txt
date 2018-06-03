@@ -20,3 +20,4 @@ djangorestframework
 djangorestframework-filters
 django-suit
 django-mptt
+django-import-export
