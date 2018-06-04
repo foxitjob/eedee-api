@@ -80,10 +80,7 @@ class SupplierResource(resources.ModelResource):
 
 
 class SupplierAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'picture', 'is_free_inquiry')
-    # list_display = ('name', 'content', 'buy_product', 'agent_product', 'sell_area', 'contact',
-    #                 'contact_job_title', 'sale_phone', 'consult_phone', 'complain_phone', 'address',
-    #                 'fax', 'email', 'website', 'is_free_inquiry')
+    list_display = ('id', 'name', 'picture', 'is_free_inquiry')
     filter_horizontal = ('products',)
     inlines = (supplier_imagesInline, supplier_product_imagesInLine)
     list_display_links = ('name',)
@@ -117,12 +114,23 @@ class manufacturer_product_imagesInLine(admin.TabularInline):
     # suit_classes = 'suit-tab suit-tab-cities'
 
 
-class ManufacturerAdmin(admin.ModelAdmin):
+class ManufacturerResource(resources.ModelResource):
+    class Meta:
+        model = Supplier
+        fields = ('id', 'name', 'content', 'product_introduce', 'contact',
+                  'contact_job_title', 'sale_phone', 'consult_phone', 'complain_phone', 'address',
+                  'fax', 'email', 'website', 'is_free_inquiry',)
+        skip_unchanged = True
+        report_skipped = False
+
+
+class ManufacturerAdmin(ImportExportModelAdmin):
     list_display = ('id', 'name', 'product_list', 'picture')
     filter_horizontal = ('products',)
     list_display_links = ('name',)
     inlines = (manufacturer_imagesInline, manufacturer_product_imagesInLine)
     exclude = ('images', 'product_images')
+    resource_class = ManufacturerResource
 
 
 class ImageAdmin(admin.ModelAdmin):
