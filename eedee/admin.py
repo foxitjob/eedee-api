@@ -80,7 +80,7 @@ class SupplierResource(resources.ModelResource):
 
 
 class SupplierAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'name', 'picture', 'is_free_inquiry')
+    list_display = ('id', 'name', 'product_list', 'picture', 'is_free_inquiry')
     filter_horizontal = ('products',)
     inlines = (supplier_imagesInline, supplier_product_imagesInLine)
     list_display_links = ('name',)
@@ -125,7 +125,7 @@ class ManufacturerResource(resources.ModelResource):
 
 
 class ManufacturerAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'name', 'product_list', 'picture')
+    list_display = ('id', 'name', 'product_list', 'picture', 'is_free_inquiry')
     filter_horizontal = ('products',)
     list_display_links = ('name',)
     inlines = (manufacturer_imagesInline, manufacturer_product_imagesInLine)
