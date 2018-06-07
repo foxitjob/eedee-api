@@ -72,7 +72,7 @@ class supplier_product_imagesInLine(admin.TabularInline):
 class SupplierResource(resources.ModelResource):
     class Meta:
         model = Supplier
-        fields = ('id', 'name', 'content', 'buy_product', 'agent_product', 'sell_area', 'contact',
+        fields = ('id', 'name', 'content', 'product_introduce', 'buy_product', 'agent_product', 'sell_area', 'contact',
                   'contact_job_title', 'sale_phone', 'consult_phone', 'complain_phone', 'address',
                   'fax', 'email', 'website', 'is_free_inquiry',)
         skip_unchanged = True
