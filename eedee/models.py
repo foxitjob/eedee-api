@@ -144,6 +144,7 @@ class Supplier(models.Model):
                            default=u'', blank=True, imagePath="uploads/images/",
                            toolbars='besttome', filePath='uploads/files/')
     products = models.ManyToManyField(Product, verbose_name='产品类别列表', blank=True)
+    product_introduce = models.TextField(verbose_name='产品介绍', blank=True, null=True, )
     buy_product = models.CharField('求购产品', max_length=200, blank=True, null=True, )
     agent_product = models.CharField('代理产品', max_length=200, blank=True, null=True, )
     sell_area = models.CharField('负责区域', max_length=200, blank=True, null=True, )
