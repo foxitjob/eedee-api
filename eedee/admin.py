@@ -116,7 +116,7 @@ class manufacturer_product_imagesInLine(admin.TabularInline):
 
 class ManufacturerResource(resources.ModelResource):
     class Meta:
-        model = Supplier
+        model = Manufacturer
         fields = ('id', 'name', 'content', 'product_introduce', 'contact',
                   'contact_job_title', 'sale_phone', 'consult_phone', 'complain_phone', 'address',
                   'fax', 'email', 'website', 'is_free_inquiry',)
