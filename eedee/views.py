@@ -11,7 +11,7 @@ from models import *
 def index(request):
     home_display_cout = Product.objects.count()
     home_display_product = Product.objects.all()[:5]
-    categorys = Category.objects.filter(parent=None).order_by('sequence')
+    categorys = Category.objects.filter(parent=None).order_by('order')
     category_1 = categorys[0]
     category_2 = categorys[1]
     category_3 = categorys[2]

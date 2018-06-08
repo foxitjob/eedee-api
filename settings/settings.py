@@ -207,7 +207,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Django Suit configuration example
 SUIT_CONFIG = {
     # header
-    'ADMIN_NAME': '医疗器械平台后台管理系统',
+    'ADMIN_NAME': '金复网后台管理',
     # 'HEADER_DATE_FORMAT': 'l, j. F Y',
     # 'HEADER_TIME_FORMAT': 'H:i',
 
