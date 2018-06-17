@@ -56,55 +56,73 @@
 					</div>
 				</div>
 			</div>
-			<div class="clearfix"> </div>
-			<!--<div class="sap_tabs">
-				<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-					<ul class="resp-tabs-list">
-						<li class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab"><span>产品中心</span></li>
-						<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>AAAAA</span></li>
-						<li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>BBBBB</span></li>
-						<div class="clear"></div>
-					</ul>
-				</div>
-			</div>
 
-			<div class="clearfix"> </div>
-            -->
+			<p>{{ supplier.product_introduce}}</p>
 
-			<div class="row shop_box-top">
-                {% for product in supplier.products.all %}
-				<div class="col-md-3 shop_box">
-					<a href="#">
-                        {% if product.picture %}
-						<img src="/media/{{ product.picture }}" class="img-responsive" alt="">
-                        {% else %}
-                        <img src="/static/eedee/images/2017-10-08_010159.png" class="img-responsive" alt="">
-                        {% endif %}
-					</a>
-					<div class="special-info grid_1 simpleCart_shelfItem">
-						<h5>{{ product.name }}</h5>
-						<!--<div class="item_add"><span class="item_price">
-						<span class="actual">$12.00</span></span>
-					</div>-->
-						<!--<div class="item_add"><span class="item_price"><a href="#">AAAAAA</a></span>
-				</div>-->
+			<style>
+				.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+					background-color: #f26f62;
+					color:white;
+				}
+			</style>
+
+			<div role="tabpanel" style="margin: 20px 0 0 0">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active">
+						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">产品图片</a>
+					</li>
+					<li role="presentation">
+						<a href="#tab" aria-controls="tab" role="tab" data-toggle="tab">公司图片</a>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+						<div class="row shop_box-top">
+                           {% for product_image in supplier.product_images.all %}
+                            <div class="col-md-3 shop_box">
+                                <a href="#">
+                                    <img src="/media/{{ product_image }}" class="img-responsive" alt="">
+                                </a>
+                                <div class="special-info grid_1 simpleCart_shelfItem">
+                                    <h5>{{ product_image.title }}</h5>
+                                </div>
+                            </div>
+                            {% endfor %}
+						</div>
 					</div>
+                <div role="tabpanel" class="tab-pane" id="tab">
+                    <div class="row shop_box-top">
+                       {% for image in supplier.images.all %}
+                        <div class="col-md-3 shop_box">
+                            <a href="#">
+                                <img src="/media/{{ image }}" class="img-responsive" alt="">
+                            </a>
+                            <div class="special-info grid_1 simpleCart_shelfItem">
+                                <h5>{{ image.title }}</h5>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
 				</div>
-                {% endfor %}
-
 			</div>
+
+			<div class="clearfix"> </div>
+
 			<hr>
-			<div class="row">
+			<div class="row panel panel-danger">
 				<div class="col-md-9 price">
-                    <p>联系人：{{ manufacturer.contact }} </p>
-                    <p>联系人职位：{{ manufacturer.contact_job_title }} </p>
-                    <p>销售热线：{{ manufacturer.sale_phone }} </p>
-                    <p>咨询热线：{{ manufacturer.consult_phone }} </p>
-                    <p>投诉热线：{{ manufacturer.complain_phone }} </p>
-					<p>地址：{{ supplier.address }} </p>
-				    <p>电话：{{ supplier.phone }} </p>
-				    <p>传真：{{ supplier.fax }}</p>
-                    <p>邮编：{{ supplier.postcode }}</p>
+                    <p>地址：{{ supplier.address }} </p>
+                    <p>销售热线：{{ supplier.sale_phone }} </p>
+                    <p>投诉电话：{{ supplier.complain_phone }} </p>
+                    <p>咨询热线：{{ supplier.consult_phone }} </p>
+				    <p>传真：{{ supplier.fax }} </p>
+                    <p>电子邮箱：{{ supplier.email }} </p>
+                    <p>企业官网：{{ supplier.website }} </p>
+                    <p>{{ supplier.contact }} {{ supplier.contact_job_title }} </p>
 				</div>
 			</div>
 		</div>
