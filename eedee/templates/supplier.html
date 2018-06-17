@@ -84,7 +84,7 @@
                            {% for product_image in supplier.product_images.all %}
                             <div class="col-md-3 shop_box">
                                 <a href="#">
-                                    <img src="/media/{{ product_image }}" class="img-responsive" alt="">
+                                    <img src="/media/{{ product_image.image }}" class="img-responsive" alt="">
                                 </a>
                                 <div class="special-info grid_1 simpleCart_shelfItem">
                                     <h5>{{ product_image.title }}</h5>
@@ -98,7 +98,7 @@
                        {% for image in supplier.images.all %}
                         <div class="col-md-3 shop_box">
                             <a href="#">
-                                <img src="/media/{{ image }}" class="img-responsive" alt="">
+                                <img src="/media/{{ image.image }}" class="img-responsive" alt="">
                             </a>
                             <div class="special-info grid_1 simpleCart_shelfItem">
                                 <h5>{{ image.title }}</h5>
