@@ -1,4 +1,4 @@
-/*艺术字体*/
+﻿/*艺术字体*/
 /*@font-face{
 
    font-family:MarkoOne-Regular;
@@ -1801,12 +1801,14 @@ margin-left: 0;
   margin-top: 0px;
   font-family: MarkoOne-Regular;
 }
+/*
 .span_3_of_2 p {
 	font-size: 0.8125em;
 	padding: 0.3em 0;
 	color: #868686;
 	line-height: 1.6em;
 }
+*/
 .rightsidebar {
 	display: block;
 	float: left;
