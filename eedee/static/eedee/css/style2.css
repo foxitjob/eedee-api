@@ -1557,9 +1557,10 @@ ul.buttons{
 	padding: 0;
 	margin-top: 10px;
 }
-/*.row.shop_box-top {
-  padding: 0 0 4em;
-}*/
+.row.shop_box-top {
+  /* padding: 0 0 4em; */
+  margin-top: 10px;
+}
 .row.shop_box-top h5 {
   color: #03358f;
   font-size: 1.1em;
